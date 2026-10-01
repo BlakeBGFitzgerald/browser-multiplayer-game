@@ -1,0 +1,10 @@
+{
+  "name": "MAGA vs Antifa",
+  "short_name": "MAGA vs Antifa",
+  "description": "MAGA vs Antifa — satirical 10-player browser game. Washington DC vs Seattle. Play in this tab.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0908",
+  "theme_color": "#0a0908",
+  "lang": "en"
+}

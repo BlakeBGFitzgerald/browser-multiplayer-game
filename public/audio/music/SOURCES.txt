@@ -1,0 +1,10 @@
+battle_drums.flac
+
+Source recording: tatamusic — battle warrior fighting drums (Pixabay 478210),
+the MP3 supplied with the project. Stereo, about 125 BPM.
+
+The supplied file peaks above full scale and spends its last five seconds
+falling into silence, so a raw loop would click and then go quiet.
+The game copy keeps the drum body from the opening hit (0.05s) through 37.1s,
+wraps the join with a 140ms equal-power crossfade, and scales the peak to
+0.89. No extra compression. One looping voice on the music bus.

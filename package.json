@@ -1,0 +1,25 @@
+{
+  "name": "maga-vs-antifa",
+  "description": "MAGA vs Antifa — satirical 10-player browser game.",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1 --port 43147",
+    "build": "tsc && vite build",
+    "preview": "vite preview --host 127.0.0.1 --port 43147",
+    "server:build": "vite build --ssr src/server/host.ts --outDir dist/server",
+    "server:check": "npm run server:build && BETA_CHECK=1 node dist/server/host.js",
+    "server": "node dist/server/host.js",
+    "start": "node dist/server/host.js"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.3",
+    "@types/ws": "^8.18.1",
+    "typescript": "~6.0.2",
+    "vite": "^8.2.2"
+  },
+  "dependencies": {
+    "ws": "^8.21.3"
+  }
+}

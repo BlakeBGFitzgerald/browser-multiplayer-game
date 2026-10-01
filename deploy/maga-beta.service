@@ -1,0 +1,23 @@
+[Unit]
+Description=MAGA vs Antifa closed beta server
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/maga-vs-antifa
+Environment=ENVIRONMENT=production
+Environment=SERVER_HOST=0.0.0.0
+Environment=SERVER_PORT=43148
+Environment=LOG_LEVEL=info
+EnvironmentFile=-/opt/maga-vs-antifa/config/beta.env
+ExecStart=/usr/bin/node dist/server/host.js
+Restart=on-failure
+RestartSec=2
+StartLimitIntervalSec=60
+StartLimitBurst=5
+KillSignal=SIGTERM
+TimeoutStopSec=8
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target

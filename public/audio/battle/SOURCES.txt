@@ -1,0 +1,29 @@
+Battle one-shots used by the game.
+
+These clips were cut from Pixabay CDN previews that were embedded in the
+saved search pages supplied with the task, plus the local drums file which
+was auditioned and not used. Pixabay lists these sound effects as
+royalty-free with no attribution required. The saved pages also named about
+forty other titles (tommy gun, infantry, battle cries, war drums, trailer
+music). Those files were not in the upload and were not downloaded.
+
+Hooli's tommy burst is the first three cracks of audio_8fdf97e706.mp3
+(the dry close-gun preview on the supplied tommy-gun page), trimmed to
+weapons/tommy/tommy_burst.wav. Cracks sit at about 18ms, 108ms, and 198ms.
+The other four previews on that page are drums, a whoosh, a bass tone, and
+a long bed. Those stay out of the gun.
+
+Used, after trim, fade, a light high-pass, and peak leveling:
+- audio_8fdf97e706.mp3 — dry close cracks → weapons/rifle/rifle_shot_01–05
+- audio_0c72fb8780.mp3 — short low-mid hits → heavy_shot_01, body_impact_01–03, heavy_impact_01, explosion_small_02
+- audio_357038f64c.mp3 — thin high noise bursts → metal_impact_01–04, distant_shot_01–04
+- audio_14558e2f5d.mp3 — airy swells → movement/whoosh_01–02
+- audio_9df6700a8b.mp3 — one decaying blast → explosion_small_01, explosion_medium_01, explosion_large_01
+  (three lengths of the same recording, not three different explosions)
+
+Rejected after listening:
+- tatamusic battle-warrior-fighting-drums (same file as audio_c0470f56bf.mp3) — compressed drum-loop music
+- audio_d45c189487.mp3, audio_dd84218105.mp3, audio_e26f963cd2.mp3 — tonal bass / drum music
+- audio_437bb6ecbc.mp3, audio_269ec1110a.mp3 — short musical phrases
+- audio_610cf78b3b.mp3, audio_8228ec01ae.mp3, audio_ee202c8b1d.mp3 — long continuous beds
+- the four .htm pages — Pixabay search UI, not audio

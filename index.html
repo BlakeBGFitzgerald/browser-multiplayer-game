@@ -1,0 +1,1160 @@
+<!doctype html>
+<html lang="en" class="desk">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"
+    />
+    <meta
+      name="description"
+      content="MAGA vs Antifa — satirical 10-player browser game. Washington DC vs Seattle. Play in this tab."
+    />
+    <meta name="application-name" content="MAGA vs Antifa" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="theme-color" content="#0a0908" />
+    <meta property="og:site_name" content="MAGA vs Antifa" />
+    <meta property="og:title" content="MAGA vs Antifa" />
+    <meta
+      property="og:description"
+      content="MAGA vs Antifa — satirical 10-player browser game. Washington DC vs Seattle. Play in this tab."
+    />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="MAGA vs Antifa" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <title>MAGA vs Antifa</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="social-box" hidden>
+      <div class="social-card">
+        <p class="kicker" id="social-kicker">Facebook</p>
+        <h2 id="social-title">Log in with Facebook</h2>
+        <p class="lede" id="social-lede">
+          This tab does not open Facebook and does not take a Facebook password. Type the email on that Facebook, then continue. First time makes a locker. Next time is the same email.
+        </p>
+        <form id="social-form" class="account-form">
+          <input id="social-email" type="email" maxlength="80" placeholder="Email on that account" autocomplete="email" />
+          <input id="social-name" maxlength="24" placeholder="Name (optional)" autocomplete="nickname" />
+          <div class="row">
+            <button type="submit" class="gold" id="btn-social-go">Continue</button>
+            <button type="button" class="thin" id="btn-social-paste">Paste</button>
+            <button type="button" class="thin" id="btn-social-cancel">Cancel</button>
+          </div>
+        </form>
+        <p class="lede" id="social-msg"></p>
+      </div>
+    </div>
+    <div id="enter-gate">
+      <div class="enter-gate-card">
+        <p class="kicker">Sound</p>
+        <h2>Click to enter with sound</h2>
+        <p class="lede">
+          Browsers keep this tab silent until a click. This press unlocks combat, the desk, and The Star-Spangled Banner in this tab. Find Game, Practice, and Custom Game do the same. Play every sound on the enter page runs the catalog. Unmute this tab if the OS muted it.
+        </p>
+        <button type="button" id="btn-enter-sound" class="red">Enter with sound</button>
+      </div>
+    </div>
+    <canvas id="view" hidden></canvas>
+    <canvas id="flag" aria-hidden="true"></canvas>
+
+    <div id="screen-nav">
+      <button type="button" id="btn-full" class="full">Fullscreen</button>
+      <button type="button" id="nav-back" class="thin" hidden>Back</button>
+    </div>
+
+    <section id="enter" class="page">
+      <p class="stamp">MAGA vs Antifa · computer browser · phone still plays · no client</p>
+      <p class="nav">
+        BROWSER GAME · MAGA VS ANTIFA · WASHINGTON DC VS SEATTLE · KIRK CUP LEAGUE
+      </p>
+      <h1>MAGA vs<br />Antifa</h1>
+      <p class="econ" id="econ">600 coins · 0 MLX · 1,000,000 MLX = $0.18 (fiatleak). Matches are free.</p>
+      <nav class="home-nav" aria-label="Main">
+        <button type="button" id="btn-play" class="find-game">Find Game</button>
+        <p class="find-game-sub">5v5 · MAGA Washington DC vs Antifa Seattle · one click into the wait room</p>
+        <button type="button" id="btn-beta" class="thin beta-open">Closed beta</button>
+        <div id="beta-box" class="beta-box" hidden>
+          <p>Invite code for the hosted match. Find Game still plays in this tab.</p>
+          <label class="beta-label">Invite code<input id="beta-code" type="password" autocomplete="off" maxlength="80" /></label>
+          <label class="beta-label">Name<input id="beta-name" maxlength="24" autocomplete="nickname" placeholder="Tester" /></label>
+          <button type="button" id="beta-join" class="red">Join beta</button>
+          <button type="button" id="beta-cancel" class="thin" hidden>Cancel</button>
+          <button type="button" id="beta-start" class="thin" hidden>Start match</button>
+          <p id="beta-status" class="beta-status" role="status"></p>
+        </div>
+        <div class="home-cols">
+          <section class="home-col">
+            <h3>Play</h3>
+            <button type="button" id="btn-practice" class="thin">Practice / Training</button>
+            <button type="button" id="btn-watch" class="thin">Custom Game</button>
+          </section>
+          <section class="home-col">
+            <h3>Collection</h3>
+            <button type="button" id="btn-roster" class="thin">Heroes</button>
+            <button type="button" id="btn-store" class="thin">Skins</button>
+            <button type="button" id="btn-store-wild" class="thin">DLC / Wildcards</button>
+          </section>
+          <section class="home-col">
+            <h3>Profile</h3>
+            <button type="button" id="btn-league" class="thin">Profile</button>
+            <button type="button" id="btn-tangled-league" class="thin">Stats</button>
+            <button type="button" id="btn-sound" class="thin">Settings</button>
+          </section>
+        </div>
+        <details class="home-more">
+          <summary>More</summary>
+          <div class="menu home-more-menu">
+            <button type="button" id="btn-clans" class="thin">Clans</button>
+            <button type="button" id="btn-market" class="thin">Quad Market</button>
+            <button type="button" id="btn-lotto" class="thin">Lotto</button>
+            <button type="button" id="btn-millix" class="thin">Millix · DAG</button>
+            <button type="button" id="btn-patch" class="thin">Patches</button>
+            <button type="button" id="btn-howto" class="thin">How to play</button>
+            <button type="button" id="btn-playbook" class="thin">Skills</button>
+            <button type="button" id="btn-faq" class="thin">FAQ</button>
+            <button type="button" id="btn-soundcheck" class="thin">Play every sound</button>
+            <button type="button" id="btn-desk" class="thin">Support</button>
+          </div>
+        </details>
+      </nav>
+      <div class="account-box" id="account-box">
+        <p class="kicker">Account</p>
+        <div id="account-in" hidden>
+          <p class="lede" id="account-you">Logged in.</p>
+          <button type="button" id="btn-account-out" class="thin">Log out</button>
+        </div>
+        <div id="account-out">
+          <p class="lede">Log in with Facebook or Gmail, or sign up with email. This locker stays on this browser. This tab does not take a Facebook or Google password.</p>
+          <div class="account-social">
+            <button type="button" id="btn-facebook" class="facebook">Log in with Facebook</button>
+            <button type="button" id="btn-gmail" class="gmail">Log in with Gmail</button>
+          </div>
+          <p class="kicker account-mail-kicker">Sign up with email</p>
+          <form id="email-signup" class="account-form">
+            <input id="email-name" maxlength="24" placeholder="Display name" autocomplete="nickname" />
+            <input id="email-new" type="email" maxlength="80" placeholder="Email" autocomplete="email" />
+            <input id="email-pass" type="password" maxlength="80" placeholder="Password (8+)" autocomplete="new-password" />
+            <input id="email-pass2" type="password" maxlength="80" placeholder="Confirm password" autocomplete="new-password" />
+            <button type="submit" class="gold" id="btn-email-up">Create account</button>
+          </form>
+          <p class="lede">
+            <button type="button" id="btn-show-email-in" class="linkish">Already have an email locker? Log in</button>
+          </p>
+          <form id="email-login" class="account-form" hidden>
+            <input id="email-in" type="email" maxlength="80" placeholder="Email" autocomplete="username" />
+            <input id="email-in-pass" type="password" maxlength="80" placeholder="Password" autocomplete="current-password" />
+            <button type="submit" class="gold" id="btn-email-in">Log in with email</button>
+          </form>
+          <p class="lede" id="account-msg"></p>
+        </div>
+        <button type="button" id="btn-account-paste" class="thin">Paste</button>
+      </div>
+      <form id="handle-form" class="row">
+        <input id="handle-in" maxlength="20" placeholder="@handle" autocomplete="username" />
+        <button type="button" id="btn-handle-paste" class="thin">Paste</button>
+        <button type="submit" class="thin">Set handle</button>
+      </form>
+      <p class="lede" id="handle-you">No handle yet. Log in with Facebook or Gmail, sign up with email, or set a local handle.</p>
+      <p class="lede" id="tangled-line">This locker · 192 gold/min. Extra gold is Tangled browser only (384).</p>
+      <p class="lede" id="spotify-line">Link Spotify on the music bar. Open Spotify, come back, and this locker pays +1,000 gold once.</p>
+      <p class="lede" id="mlx-hour-line">Millix Hourly · unclaimed Millix rolls over.</p>
+      <p class="lede" id="latest-patch"></p>
+      <div id="heat-board">
+        <p class="kicker">Daily heat</p>
+        <p class="lede" id="heat-board-line">Win coins. First win of the day pays extra. Three quests reset at midnight.</p>
+        <ul id="heat-quests"></ul>
+      </div>
+      <details class="enter-lore">
+        <summary>How this campus works</summary>
+      <p class="lede" id="enter-blurb">
+        This is a browser game. No launcher, no installer, no client to download.
+        A live 5v5 match puts a hero fight on mid under the hanging flag — extra AI fill the other seats. Both sit the demo and Watch AI.
+        Queue MAGA seats in Washington DC vs Antifa seats in Seattle. @blake and @lilhooligan sit campus and swap sides each game. @blake has the keyboard when he logs in — P if he wants expert AI. MAGA still holds DC. Antifa still holds Seattle. Five seats a team. Top street runs to the top-left corner, bot to the bottom-right. Chat while seats fill. Draft a kit. Join a
+        campus clan. Log in with Facebook, Gmail, or sign up with email. Stats is a W-L board. This locker stays at 192 gold/min. Play in Tangled browser for 384.
+        Millix users enter an hourly lottery — stakes sit in escrow, then 1st, 2nd, and 3rd auto-pay.
+        Millix · DAG on the enter page is the explainer: Millix is not a blockchain. It is a directed acyclic graph.
+        Link Spotify on the music bar for +1,000 gold once — open Spotify, then come back.
+        Spectator seats cost 100,000 Millix — type in chat, no Talk, no mic.
+        Campus Desk is in the corner — Support. It answers from the FAQ in this tab. Email a human at thedannymacdope@gmail.com.
+        Every match opens with a ring announcer — bell, desk, gong on FIGHT. For now the soundtrack is The Star-Spangled Banner, played in this tab — public domain, no file to download. Spotify does not have to load. Melee clinks for heroes. Arrow tings for minions. A coin drop on every last-hit and every hero kill. Crits, bashes, and splashes have their own stings. A looping fight bed fills the clash — all of it royalty-free synth in this tab, no sample pack. Open Sound card to set combat, desk, and music. Click Enter with sound so the live 5v5 has audio — browsers keep the mixer dead until that click, then the entrance sting plays. Music On / Off, Next (restarts the anthem), Volume, and the song name scrolling across the bar at the top. Mute on the HUD cuts the anthem. Combat clinks, tings, barks, and the ring announcer keep playing. Link Spotify still pays +1,000 gold once if you want that locker bonus. Hold T to talk with your team on the mic. Hold G to talk to everyone. Spectators type. They cannot Talk. Campus Book in the wait room: three markets, 100 gold a slip, one bet per hour.
+        Extra skins are £1.99 on PayPal or card, or 40% off with Millix.
+        Daily heat: last-hits pop gold, kills stack a streak, wins pay locker coins, three quests reset at midnight.
+        Thirty playable kits: 8 Liberty / Tradition, 8 Progress / Equality, 6 MMA DLC, 8 Wildcard DLC. Fountain shop items raise your stats,
+        splash nearby rivals, crit, and bash. Six item slots sit on the match HUD. The Gift Shop buys and sells into them. Open How to play for the first-match walkthrough. Open Skills for every bind and every Q W E R. Quad Market lists unwanted skins and leftover fountain items.
+      </p>
+      </details>
+      <p class="keys">
+        <kbd>Arrows</kbd> pan ·
+        <kbd>RMB</kbd> walk · <kbd>A</kbd> choose a creep or hero target ·
+        Auto-attack if you have no lock ·
+        <kbd>Z</kbd> attack-move ·
+        <kbd>Q</kbd><kbd>W</kbd><kbd>E</kbd><kbd>R</kbd> skills ·
+        <kbd>X</kbd><kbd>C</kbd><kbd>F</kbd> also cast ·
+        <kbd>B</kbd> Gift Shop ·
+        <kbd>P</kbd> expert autoplay ·
+        <kbd>Space</kbd> snap camera · <kbd>F11</kbd> fullscreen ·
+        <kbd>Esc</kbd> pause ·
+        How to play walks the first match · Skills lists every kit
+      </p>
+      <p class="engine">
+        Satirical 10-player browser game. Original heroes and kits — not affiliated
+        with Dota, Heroes of Newerth, or any commercial publisher. Runs on
+        <strong>Quad Engine C23</strong>: campus bake rev 24 — territory wash, woods occlusion, lane dashes, river specular, fountain pools restamped after the wash, jungle roads you can read from the fountain, tree contact shadows, distant haze — then a live pass (river sparkle, fountain motes, keep crystal pulse). Mid keeps sit closer to the river. Fountain plazas, DC and Seattle bases, and the Gift Shop get another four environment paint passes. Keeps stay environment art. Every playable kit is a <strong>C42</strong> pixel sprite. Grump uses the supplied pixel-art sheet — unique faces, outfits, gaits, ability icons, and promotional thumbs on the existing art pipeline. Draft cards, store skins, HUD busts, and the in-match sprite share that sheet. Grove Walk and Thicket Walk are the primary jungle roads. Not Unreal. Thirty kits: Liberty 8, Progress 8, MMA DLC 6, Wildcard DLC 8.
+        Washington DC vs Seattle. Developed by
+        <strong>Daniel Alan Cornish</strong> and <strong>Blake Fitzgerald</strong>.
+      </p>
+    </section>
+
+    <aside id="rail">
+      <div id="atlas-wrap">
+        <div id="play-details">
+          <h3>Gameplay</h3>
+          <p>
+            Last-hit creeps for gold. Walk with the minion line. Take towers. Destroy the other town.
+            <span id="play-campus">MAGA holds Washington DC. Antifa holds Seattle. Five seats a side. @blake and @lilhooligan sit campus and swap after each real match. @blake has the keyboard when he logs in. Demo and Watch AI put a hero fight on mid.</span>
+          </p>
+          <ul id="play-facts">
+            <li><b class="maga">Win</b> — raze the other town. MAGA fountain bottom-left. Seattle fountain top-right.</li>
+            <li><b>Gold</b> — last-hits, towers, hero kills. Spend in the fountain Gift Shop (<kbd>B</kbd>).</li>
+            <li><b>Towers</b> — three a street. Inner in front of town, middle midway, outer at the corner on top and bot. Mid outer sits toward the river. Then the town.</li>
+            <li><b>Streets</b> — top to the top-left corner, mid over the river bridge, bot to the bottom-right.</li>
+            <li><b>Jungle</b> — a jungle road on each side (Grove Walk on DC, Thicket Walk on Seattle) plus quieter gank cuts. Mall Oaks, Reflecting Grove, Rainier Stand, Elliott Thicket. Camps respawn.</li>
+            <li><b>Skills</b> — enter-page Skills lists every control, Liberty 8, Progress 8, MMA DLC 6, and Wildcard DLC 8 Q W E R.</li>
+          </ul>
+        </div>
+        <p id="atlas-cap">Campus map · MAGA Washington DC vs Antifa Seattle · last-hit · destroy the other town</p>
+        <canvas id="atlas"></canvas>
+        <ul id="atlas-key">
+          <li><b class="maga">MAGA</b> <span id="atlas-key-maga">holds Washington DC. Healing pool. @blake sits this game.</span></li>
+          <li><b class="antifa">ANTIFA</b> <span id="atlas-key-antifa">holds Seattle. Healing pool. @lilhooligan sits this game.</span></li>
+          <li>Top street runs to the top-left corner. Mid crosses the stone river bridge. Bot runs to the bottom-right corner.</li>
+          <li>Three towers a street: inner in front of town, middle midway up the lane, outer at the top-left and bottom-right corners on those streets. Mid outer sits toward the river. Take them in order.</li>
+          <li>Woods sit between the lanes. Back tracks of packed dirt run behind the streets — gank paths through the groves.</li>
+          <li>RMB walk · A a creep or hero to lock that target · auto-attack if you have no lock · T team mic · G all mic · Q W E R skills · B Gift Shop. Click the live match under this map to watch.</li>
+        </ul>
+      </div>
+      <div id="demo-wrap">
+        <p id="demo-cap">LIVE · 5v5 · hero fight on mid · click to enter with sound</p>
+        <canvas id="demo"></canvas>
+      </div>
+    </aside>
+
+    <section id="wait" class="page" hidden>
+      <p class="nav">Browser game · MAGA holds Washington DC · Antifa holds Seattle</p>
+      <h2>Wait room</h2>
+      <div id="queue-box" class="queue-box">
+        <p class="kicker" id="queue-mode">5v5 · MAGA vs Antifa · Washington DC vs Seattle</p>
+        <p class="queue-search" id="queue-search">Searching for match…</p>
+        <p class="lede" id="queue-party">Party 2/10</p>
+        <button type="button" id="btn-cancel-search" class="red">Cancel Search</button>
+      </div>
+      <p class="sub" id="wait-sub">2/10 on the field. Five seats a side. @blake and @lilhooligan already in. @blake plays when he wants.</p>
+      <div class="wait-grid">
+        <div>
+          <h3 class="maga" id="wait-maga-h">MAGA · Washington DC · 4 + @blake</h3>
+          <div id="seats-maga" class="seats"></div>
+        </div>
+        <div>
+          <h3 class="antifa" id="wait-antifa-h">ANTIFA · Seattle · 4 + @lilhooligan</h3>
+          <div id="seats-antifa" class="seats"></div>
+        </div>
+        <div class="chat-col">
+          <h3>Chat</h3>
+          <p class="chat-test-banner" hidden>CHAT TEST MODE</p>
+          <div class="chat-wrap">
+            <div id="chat" class="chat"></div>
+            <button type="button" id="chat-new" class="chat-new" hidden>New messages</button>
+          </div>
+          <form id="chat-form">
+            <input id="chat-in" maxlength="140" placeholder="Type message..." autocomplete="off" />
+            <button type="submit" id="chat-type" class="gold">SEND</button>
+            <button type="button" id="chat-talk" class="red">Talk</button>
+          </form>
+          <div class="mic-row" id="mic-row">
+            <button type="button" id="chat-team" class="thin">Hold T · team mic</button>
+            <button type="button" id="chat-all" class="red">Hold G · all mic</button>
+          </div>
+        </div>
+      </div>
+      <div class="spec-block">
+        <h3 class="spec">SPECTATOR GALLERY · type only · 100,000 MLX</h3>
+        <p class="lede" id="spec-lede">Five seats. Millix only. Spectators type in chat and cannot Talk. No team mic. No all mic.</p>
+        <div id="seats-spec" class="seats spec-seats"></div>
+      </div>
+      <div class="book-block" id="book">
+        <h3>Campus Book</h3>
+        <p class="lede" id="book-lede">
+          Three markets. 100 gold a slip. One bet per hour. The book locks when the match
+          starts and pays when a town falls. Leave the wait room and the stake comes back.
+          Daniel Alan Cornish and Blake Fitzgerald take 1% of every bet — every stake and every payout.
+        </p>
+        <p class="econ" id="book-econ"></p>
+        <div class="row" id="book-stakes"></div>
+        <div id="book-markets" class="book-markets"></div>
+        <p class="lede" id="book-msg"></p>
+        <div id="book-hist" class="book-hist"></div>
+      </div>
+      <div class="wait-actions">
+        <button type="button" id="btn-fill" class="thin">Fill remaining with bots</button>
+        <button type="button" id="btn-sit-spec" class="gold">Sit in gallery</button>
+        <button type="button" id="btn-sit-maga" class="thin">Sit MAGA seat 1</button>
+        <button type="button" id="btn-watch-wait" class="gold">Watch AI play</button>
+        <button type="button" id="btn-draft" class="red">Enter draft</button>
+        <button type="button" id="btn-leave" class="thin">Leave queue</button>
+      </div>
+      <div class="kick-block" id="kick-box" hidden>
+        <p class="kicker">Kick vote · idle</p>
+        <p class="lede" id="kick-lede">Idle seats can be kicked. Click an IDLE seat, or type /kick name.</p>
+        <div class="row">
+          <button type="button" id="btn-kick-yes" class="red">Vote yes</button>
+          <button type="button" id="btn-kick-no" class="thin">Vote no</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="draft" class="page" hidden>
+      <p class="nav">Draft · MAGA · Washington DC vs Seattle</p>
+      <h2>Pick your kit</h2>
+      <p class="lede">Thirty kits. FREE TO PLAY is sixteen political parody heroes — eight Liberty / Tradition (Red) and eight Progress / Equality (Blue). MMA DLC is six legendary parody fighters. WILDCARDS are eight unclassified DLC kits. Parody.</p>
+      <nav class="draft-jump" aria-label="Roster sections">
+        <a href="#pick-standard">FREE TO PLAY</a>
+        <a href="#pick-liberty">Liberty / Tradition</a>
+        <a href="#pick-progress">Progress / Equality</a>
+        <a href="#pick-mma">MMA DLC</a>
+        <a href="#pick-dlc">WILDCARDS</a>
+      </nav>
+      <div id="picks"></div>
+      <aside id="mma-unlock" class="mma-unlock" hidden>
+        <p class="kicker">MMA DLC</p>
+        <h2>UNLOCK THE MMA ROSTER</h2>
+        <p class="lede">6 legendary parody fighters.</p>
+        <ul id="mma-unlock-names" class="mma-roster"></ul>
+        <div class="mma-prices">
+          <div>
+            <span>NORMAL PRICE</span>
+            <b id="mma-unlock-std"></b>
+          </div>
+          <div>
+            <span>MILLIX PRICE</span>
+            <b id="mma-unlock-mlx"></b>
+          </div>
+        </div>
+        <p class="mlx-off-banner" id="mma-unlock-off">40% OFF WITH MILLIX</p>
+        <p class="econ" id="mma-unlock-bal">Your Millix: 0 MLX</p>
+        <p class="lede" id="mma-unlock-msg"></p>
+        <div class="row">
+          <button type="button" id="btn-mma-mlx" class="pay">BUY WITH MILLIX</button>
+          <button type="button" id="btn-mma-std" class="red">BUY STANDARD</button>
+          <button type="button" id="btn-mma-cancel" class="thin">CANCEL</button>
+        </div>
+      </aside>
+      <aside id="kit-sheet" class="kit-sheet" aria-live="polite"></aside>
+      <div class="wait-actions">
+        <button type="button" id="btn-lock" class="red">Lock in · enter Washington DC</button>
+        <button type="button" id="btn-random-kit" class="thin">Random kit</button>
+        <button type="button" id="btn-draft-back" class="thin">Back</button>
+      </div>
+    </section>
+
+    <section id="store" class="page wide" hidden>
+      <p class="nav">Store · downloadable content · extra skins</p>
+      <h2>DLC Store</h2>
+      <p class="lede">
+        This is the store for downloadable content. <strong>MMA DLC</strong> unlocks six playable parody fighters —
+        Conor Macgregor, Khabib Nurmagoat, Jon Jonesy, Israel Adesanya-ish, Dustin Poirier-ish, Nate Diaz-ish —
+        with a calculated <strong>40% OFF WITH MILLIX</strong> (Millix price is 60% of the standard pack sticker).
+        <strong>DLC / Wildcards</strong> are eight playable unclassified heroes — The Icon, The Enigma, The Cartoons, The Reality Dynasty, The Legend, The Entitlement, The Tech, Pheobe. Each extra skin is £1.99, or <strong>40% off with Millix</strong>. The Wildcard Pack unlocks all eight. MMA walkout looks still sell on the MMA DLC shelf.
+        Marvel / DC parodies — Captain Amerigo, Quad-Crawler, Brat-Man, Man of Steal,
+        Wonder Hours, The Flush — and a <strong>Public domain</strong> shelf: Mikey Mouse,
+        Minnie Mouse, Winnie-the-Pooh, Tigger, Alice, Mad Hatter, Cheshire Cat, Sherlock Holmes,
+        Count Dracula, Frankenstein, Felix the Cat, Dorothy Gale, Robin Hood. Literary and
+        Steamboat-era looks, not later studio designs. Parody looks are not Marvel and not DC.
+        Spin the campus wheel once a day — not every spin is a winner.
+        Extra skins are <strong>£1.99</strong> on PayPal or card, or <strong>40% off with Millix</strong>. Spectator seats are Millix only at
+        <strong>100,000 MLX</strong> — type in chat, no Talk, no mic. Matches stay free. Pay with
+        <strong>Millix</strong> (40% off the £1.99 sticker), <strong>PayPal</strong>,
+        or <strong>card</strong> (£1.99). <strong>Daniel Alan Cornish</strong> and
+        <strong>Blake Fitzgerald</strong> take <strong>1%</strong> of every
+        PayPal payment and every card charge, and 1% of Millix, lotto, and
+        Campus Book transactions. When the payment clears — Millix node, PayPal, or
+        card — the unlock drops into your locker.
+      </p>
+      <p class="econ" id="store-econ"></p>
+      <div id="locker" class="locker">
+        <span>Your locker</span>
+        <p id="locker-list">Empty. Buy a skin below.</p>
+      </div>
+      <div id="wheel-box" class="wheel-box">
+        <h3>Campus wheel</h3>
+        <p class="lede">
+          One free spin a day. The locker stamps it when you hit Spin — one spin,
+          then you wait until midnight. Not every spin is a winner. Miss wedges pay
+          nothing. Land a skin you do not own and it drops in the locker with no
+          payment. If that skin is already yours, the locker pays 80 coins instead.
+        </p>
+        <div class="wheel-stage">
+          <div class="wheel-pointer" aria-hidden="true"></div>
+          <canvas id="wheel" width="320" height="320"></canvas>
+        </div>
+        <p class="econ" id="wheel-status">One free DLC spin a day.</p>
+        <div class="row">
+          <button type="button" id="btn-wheel" class="gold">Spin the campus wheel</button>
+        </div>
+      </div>
+      <div class="rails">
+        <div class="rail mlx">
+          <span>Micropayment · 40% off £1.99</span>
+          <b>Millix node</b>
+          <i>Send MLX to this node. When it clears, the DLC activates. Each extra skin is £1.99, or 40% off here.</i>
+          <code id="mlx-node-show"></code>
+        </div>
+        <div class="rail paypal">
+          <span>Full price · £1.99 a skin</span>
+          <b>PayPal</b>
+          <i id="pp-blurb">PayPal to thedannymacdope@gmail.com. 1% of every PayPal payment to Daniel Alan Cornish and Blake Fitzgerald. When it clears, the DLC activates.</i>
+          <code id="pp-show"></code>
+        </div>
+        <div class="rail card">
+          <span>Full price · £1.99 a skin</span>
+          <b>Card</b>
+          <i id="card-blurb">D A Cornish · account 73922859 · sort 20-01-09 · exp 03/31. 1% of every card charge to Daniel Alan Cornish and Blake Fitzgerald. When that account clears, the DLC activates.</i>
+          <code id="card-show"></code>
+        </div>
+      </div>
+      <p id="store-msg" class="lede"></p>
+      <div class="row">
+        <button type="button" id="btn-mlx-pack" class="gold">Load Millix · 100 coins → 500 MLX</button>
+        <button type="button" id="btn-store-market" class="thin">Quad Market · unwanted skins</button>
+      </div>
+      <div id="store-tabs" class="row tabs"></div>
+      <div id="store-list"></div>
+    </section>
+
+    <section id="market" class="page wide" hidden>
+      <p class="nav">Quad Market · unwanted skins and fountain items</p>
+      <h2>Quad Market</h2>
+      <p class="lede">
+        List a DLC skin you do not wear, or a leftover fountain item from a match.
+        Campus listings sit next to yours. Buy with coins. Daniel Alan Cornish and
+        Blake Fitzgerald take 1% of every escrowed sale. A listed good is held in escrow until it
+        sells or you pull it. NPC buyers pick up your listings after a short wait.
+      </p>
+      <p class="econ" id="market-econ"></p>
+      <p class="lede" id="market-msg">List something from your locker, or buy a campus drop.</p>
+      <div class="locker" id="market-stash-box">
+        <span>Your locker</span>
+        <p id="market-stash">Empty. Finish a match with fountain items, or buy a skin in the DLC Store.</p>
+      </div>
+      <form id="market-list-form" class="row">
+        <select id="market-sku"></select>
+        <input id="market-price" maxlength="5" inputmode="numeric" placeholder="Ask coins" />
+        <button type="submit" class="gold" id="btn-market-list">List on Quad Market</button>
+      </form>
+      <h3>Your listings</h3>
+      <div id="market-mine" class="store-list"></div>
+      <h3>Campus board</h3>
+      <div id="market-board" class="store-list"></div>
+    </section>
+
+    <section id="clans" class="page" hidden>
+      <p class="nav">Campus clans</p>
+      <h2>Clans</h2>
+      <p class="lede">
+        Tag up before the wait room. House clans live on this machine. Found your
+        own or tap a roster to join. Your tag rides on MAGA seat 1.
+      </p>
+      <form id="clan-form" class="row">
+        <input id="clan-tag" maxlength="5" placeholder="TAG" />
+        <input id="clan-name" maxlength="24" placeholder="Clan name" />
+        <button type="submit" class="red">Found clan</button>
+      </form>
+      <p id="clan-you" class="econ"></p>
+      <div class="row">
+        <button type="button" id="btn-clan-leave" class="thin">Leave clan</button>
+      </div>
+      <ul id="clan-list" class="list"></ul>
+    </section>
+
+    <section id="lotto" class="page" hidden>
+      <p class="nav">Lotto · Millix Hourly · Quad Lotto</p>
+      <h2>Millix Hourly</h2>
+      <p class="lede">
+        For Millix users. One draw every hour. Up to three people win. Stake
+        <strong>50 MLX</strong> to enter this hour. Stakes sit in <strong>escrow</strong> on the
+        campus Millix node until the hour settles. The pot is every stake in the hour —
+        you plus twenty-one other Millix users — plus Millix that rolled over when a
+        place had no winner. After the hour the node pays
+        <strong>1st 50%</strong>, <strong>2nd 30%</strong>, <strong>3rd 20%</strong> to each
+        winner’s Millix wallet. If a place has no winner, that share stays in escrow and
+        rolls into the next hour. If nobody hits, the whole pot rolls over. Save your
+        receive address below. If you win with no wallet saved, the prize stays in escrow
+        until you do, then it sends.
+        Hold MLX, clear a Millix payment, or log in on Tangled to qualify.
+        Daniel Alan Cornish and Blake Fitzgerald take 1% of every escrow in and every
+        escrow out — your stake, the other twenty-one Millix stakes, and every prize
+        the node pays.
+      </p>
+      <p class="econ" id="mlx-cd">Next draw in —</p>
+      <p class="econ" id="mlx-pot"></p>
+      <p id="mlx-status" class="lede"></p>
+      <div class="row">
+        <button type="button" id="btn-mlx-enter" class="pay">Enter this hour · 50 MLX</button>
+      </div>
+
+      <h3>Millix wallet</h3>
+      <p class="lede">
+        Personal receive address for Hourly winnings. The campus node holds the pot.
+        1st, 2nd, and 3rd pay out from escrow when there is a winner. 1% of that
+        escrow out goes to Daniel Alan Cornish and Blake Fitzgerald. Unclaimed Millix
+        rolls into the next hour.
+      </p>
+      <p class="econ" id="mlx-escrow-line"></p>
+      <p class="node-box">
+        <span>Campus escrow node</span>
+        <code id="mlx-escrow-node"></code>
+        <button type="button" id="btn-copy-escrow" class="thin">Copy node</button>
+      </p>
+      <form id="mlx-pay-form" class="row">
+        <input
+          id="mlx-pay-in"
+          maxlength="90"
+          placeholder="Your Millix receive address"
+          autocomplete="off"
+          spellcheck="false"
+        />
+        <button type="button" id="btn-mlx-paste" class="thin">Paste</button>
+        <button type="submit" class="gold">Save wallet</button>
+      </form>
+      <p id="mlx-pay-status" class="lede"></p>
+      <ol id="mlx-winners" class="list mlx-winners"></ol>
+      <ul id="mlx-hist" class="list"></ul>
+      <h3>Hourly payouts</h3>
+      <ul id="mlx-pays" class="list"></ul>
+
+      <h2>Quad Lotto</h2>
+      <p class="lede">
+        Pick six numbers from 1 to 40. A ticket is <strong>100,000 MLX</strong>. Millix only.
+        Draw is in this tab. Two hits pay 40,000 MLX. Three pay 160,000. Four pay 500,000.
+        Five pay 1,800,000. Six is the 8,000,000 MLX jackpot. Daniel Alan Cornish and Blake
+        Fitzgerald take 1% of every ticket and every payout.
+      </p>
+      <p class="econ" id="lotto-econ"></p>
+      <p id="lotto-picks" class="econ">0 / 6 picked</p>
+      <div id="lotto-grid" class="balls"></div>
+      <div class="row">
+        <button type="button" id="btn-quick" class="thin">Quick pick</button>
+        <button type="button" id="btn-ticket" class="gold">Buy ticket · 100,000 MLX</button>
+      </div>
+      <p id="lotto-out" class="lede"></p>
+      <ul id="lotto-hist" class="list"></ul>
+    </section>
+
+    <section id="lotto-sandbox" class="page wide" hidden>
+      <p class="sb-banner">LOTTERY TEST MODE</p>
+      <p class="nav">Sandbox · Quad Lotto · Millix Hourly · no live locker</p>
+      <h2>Lottery sandbox</h2>
+      <p class="lede">
+        Development and QA only. Tickets spend <strong>sandbox MLX</strong>. The live locker,
+        live jackpot, live draw history, and real Millix are not charged. Same
+        <code>drawSix</code>, <code>lottoPrize</code>, and <code>drawHour</code> as the public pages.
+        Ticket still <strong>100,000 MLX</strong>. Hourly stake still <strong>50 MLX</strong>.
+        Millix still <strong>40% off</strong> DLC on the store — this page does not change that.
+      </p>
+      <p class="econ" id="sb-bal"></p>
+      <p id="sb-picks" class="econ">0 / 6 picked</p>
+      <div id="sb-grid" class="balls"></div>
+      <div class="row">
+        <button type="button" id="sb-quick" class="thin">Quick pick</button>
+        <button type="button" id="sb-buy" class="gold">Purchase test entry</button>
+        <button type="button" id="sb-claim" class="thin">Claim prize</button>
+        <button type="button" id="sb-hourly" class="pay">Hourly test stake</button>
+      </div>
+      <div class="row">
+        <button type="button" id="sb-edges" class="thin">Run edge suite</button>
+        <button type="button" id="sb-sim" class="thin">100,000 draws</button>
+        <button type="button" id="sb-sim1m" class="thin">1,000,000 draws</button>
+        <button type="button" id="sb-fake" class="thin">Forge a win</button>
+        <button type="button" id="sb-price" class="thin">Rewrite price</button>
+        <button type="button" id="sb-reset" class="rage">Reset sandbox</button>
+      </div>
+      <p id="sb-out" class="lede"></p>
+      <ul id="sb-hist" class="list"></ul>
+      <pre id="sb-report" class="sb-report"></pre>
+      <button type="button" id="sb-back" class="thin">Leave test mode</button>
+    </section>
+
+    <section id="wheel-sandbox" class="page wide" hidden>
+      <p class="sb-banner">SPIN THE WHEEL — TEST MODE</p>
+      <p class="nav">Sandbox · campus wheel · no live locker · no MILLIX</p>
+      <h2>Wheel sandbox</h2>
+      <p class="lede">
+        Development and QA only. Simulated days do not move the calendar. Spins use the live
+        <code>pickWheelIndex</code>. Slice count matches the production wheel. Three playable heroes
+        sit on the wheel; every other wedge is <strong>[BOGUS TEST PRIZE]</strong> and never unlocks
+        a skin, hero, or DLC. Live ownership and MILLIX stay put.
+      </p>
+      <p class="econ" id="wh-day">SIMULATED DAY: —</p>
+      <pre id="wh-heroes" class="sb-report"></pre>
+      <p class="econ" id="wh-bogus"></p>
+      <pre id="wh-audit" class="sb-report"></pre>
+      <canvas id="wh-canvas" width="320" height="320" aria-label="Sandbox wheel"></canvas>
+      <div class="row">
+        <button type="button" id="wh-edges" class="thin">Run edge suite</button>
+        <button type="button" id="wh-run" class="gold">100,000 spins / day</button>
+        <button type="button" id="wh-run1m" class="thin">1,000,000 spins / day</button>
+        <button type="button" id="wh-reset" class="rage">Reset sandbox</button>
+      </div>
+      <p id="wh-status" class="lede"></p>
+      <pre id="wh-results" class="sb-report"></pre>
+      <pre id="wh-report" class="sb-report"></pre>
+      <button type="button" id="wh-back" class="thin">Leave test mode</button>
+    </section>
+
+    <section id="anim-sandbox" class="page wide" hidden>
+      <p class="sb-banner">HERO ANIMATION — TEST MODE</p>
+      <button type="button" id="an-back" class="thin">Back</button>
+      <p class="nav">Sandbox · live C42 blit · every playable kit</p>
+      <h2>Animation roster</h2>
+      <p class="lede">
+        Cycles idle, walk, attack, ability cast, ultimate, hit, and death on the same pixel
+        painter the match uses. Combat numbers stay put.
+      </p>
+      <p class="econ" id="an-hero">—</p>
+      <p class="econ" id="an-pose">—</p>
+      <p class="lede" id="an-status"></p>
+      <canvas id="an-canvas" width="420" height="360" aria-label="Hero animation cycle"></canvas>
+      <div class="row">
+        <button type="button" id="an-prev" class="thin">Previous hero</button>
+        <button type="button" id="an-pause" class="gold">Pause</button>
+        <button type="button" id="an-next" class="thin">Next hero</button>
+        <button type="button" id="an-match" class="red">Run Watch AI match</button>
+      </div>
+      <ul id="an-roster" class="list"></ul>
+    </section>
+
+    <section id="millix" class="page wide" hidden>
+      <p class="nav">Millix · DAG · micropayments</p>
+      <h2>Millix and the DAG</h2>
+      <p class="lede">
+        Millix (MLX) is a cryptocurrency on a directed acyclic graph, not a blockchain and not an ERC-20 token.
+        MAGA vs Antifa takes Millix for DLC (40% off the £1.99 sticker), spectator seats, Quad Lotto, and Millix Hourly.
+        Protocol facts below follow
+        <a href="https://www.millix.org/" target="_blank" rel="noreferrer">millix.org</a>.
+        This game is not millix.org.
+      </p>
+      <nav class="gp-toc" id="millix-toc">
+        <a href="#millix-what">What Millix is</a>
+        <a href="#millix-dag">What a DAG is</a>
+        <a href="#millix-flow">How a transaction moves</a>
+        <a href="#millix-campus">On this campus</a>
+        <a href="#millix-wallet">Wallets</a>
+        <a href="#millix-links">Links</a>
+      </nav>
+      <div class="dag-stage">
+        <canvas id="dag-view" width="720" height="280" aria-label="Directed acyclic graph of a Millix transaction"></canvas>
+        <p class="lede" id="dag-cap">A DAG. Arrows only go forward. Gold is the live hop. No blocks. No mining. No loop back.</p>
+      </div>
+
+      <section class="mlx-sec" id="millix-what">
+        <h3>What Millix is</h3>
+        <p>
+          Millix is an open-source, peer-to-peer cryptocurrency built for speed, scale, and small payments.
+          It is not Bitcoin. It is not Ethereum. It is not an ERC-20. Development started in 2018.
+          The genesis event was 20 January 2020. All Millix that will exist was created then — it is not mined,
+          and millix.org does not sell it. Buy and sell on
+          <a href="https://millix.com/" target="_blank" rel="noreferrer">millix.com</a>
+          and other exchanges that list MLX.
+        </p>
+        <p>
+          Every node has the same authority. There is no miner caste and no validator hierarchy.
+          A node is any device running the Millix software — laptops, servers, even low-power boards.
+          Transaction fees go to a randomly chosen proxy node, not to a mining pool.
+          Fiat value on this locker uses the fiatleak peg printed on the enter page:
+          <strong>1,000,000 MLX = $0.18</strong>.
+        </p>
+      </section>
+
+      <section class="mlx-sec" id="millix-dag">
+        <h3>What a DAG is</h3>
+        <p>
+          DAG means directed acyclic graph. Directed: every edge has a direction, like time.
+          Acyclic: those edges never loop back to form a cycle. Graph: many nodes, many paths, not one chain of blocks.
+          Millix also calls this a tangle. Data can fan out along several branches at once, so capacity can rise
+          as more nodes join instead of waiting on a single block producer.
+        </p>
+        <p>
+          A blockchain is one ordered stack of blocks. A DAG is a one-way mesh. You do not need the entire graph
+          on every machine. Millix shards transaction data across nodes. Each node is obliged to keep its shard,
+          not a full copy of history. Older settled transactions hibernate so the working set stays small.
+        </p>
+      </section>
+
+      <section class="mlx-sec" id="millix-flow">
+        <h3>How a transaction moves</h3>
+        <ol class="mlx-steps">
+          <li>A sender builds a transaction and a random node is picked as proxy.</li>
+          <li>The proxy checks history: funds exist, no double spend. If it lacks a record, it asks peers.</li>
+          <li>If valid, the proxy fans the transaction out. Peers validate on their own and compare answers.</li>
+          <li>Once consensus holds, the transaction stabilizes. After about ten minutes it hibernates — resting, not rewritten.</li>
+          <li>The proxy keeps the fee the sender attached. The sender sets the fee; the wallet can suggest one from recent traffic.</li>
+        </ol>
+        <p>
+          Trust is not “everyone has the same full ledger.” Nodes ask several random peers and compare what they hear.
+          That is the millix.org design: pick a random node, request, repeat, compare.
+        </p>
+      </section>
+
+      <section class="mlx-sec" id="millix-campus">
+        <h3>On this campus</h3>
+        <p>
+          Matches are free. Millix is the micropayment rail. Each extra skin is <strong>£1.99</strong> on PayPal or card, or <strong>40% off with Millix</strong>.
+          A spectator seat is <strong>100,000 MLX</strong>, Millix only. Quad Lotto tickets are 100,000 MLX.
+          Millix Hourly stakes <strong>50 MLX</strong> into escrow on the campus node until the hour settles.
+          <strong>Daniel Alan Cornish</strong> and <strong>Blake Fitzgerald</strong> take <strong>1%</strong>
+          of every Millix send, every Hourly escrow in and out, and every lotto ticket and prize.
+        </p>
+        <p class="node-box">
+          <span>Campus escrow node</span>
+          <code id="millix-node"></code>
+          <button type="button" id="btn-copy-millix-node" class="thin">Copy node</button>
+        </p>
+        <p class="lede" id="millix-node-note"></p>
+        <p>
+          That address is campus escrow, not your wallet. Do not save it as your Hourly receive address.
+          DLC unlocks when this node clears. Load Millix in the DLC Store (100 coins → 500 MLX) if the locker is short.
+        </p>
+      </section>
+
+      <section class="mlx-sec" id="millix-wallet">
+        <h3>Wallets and addresses</h3>
+        <p>
+          Receive addresses on this tab start with <strong>1</strong>. Store Millix in the official wallet from millix.org,
+          a hosted wallet on millix.com, or
+          <a href="https://tangled.com/" target="_blank" rel="noreferrer">Tangled browser</a>,
+          which can run a node and a Millix wallet. Tangled and millix.com are not millix.org.
+          Back up the 24-word phrase the wallet gives you. This game locker is browser local storage — it is not a Millix node.
+        </p>
+        <p>
+          Hourly prizes pay to the personal address you save on Lotto. If you win with no address saved, the prize stays
+          in escrow on the campus node until you save one, then it sends.
+        </p>
+      </section>
+
+      <section class="mlx-sec" id="millix-links">
+        <h3>Links</h3>
+        <ul class="list mlx-links">
+          <li><a href="https://www.millix.org/" target="_blank" rel="noreferrer">millix.org</a> — protocol, FAQ, tech paper. Open source. Not this game.</li>
+          <li><a href="https://www.millix.org/faq.html" target="_blank" rel="noreferrer">millix.org/faq</a> — DAG, proxies, shards, hibernation.</li>
+          <li><a href="https://millix.com/" target="_blank" rel="noreferrer">millix.com</a> — wallet, exchange, explorer. Separate company.</li>
+          <li><a href="https://fiatleak.com/" target="_blank" rel="noreferrer">fiatleak.com</a> — fiat peg used on this locker (1,000,000 MLX = $0.18).</li>
+          <li><a href="https://tangled.com/" target="_blank" rel="noreferrer">tangled.com</a> — browser with a Millix wallet. Not a campus login.</li>
+        </ul>
+      </section>
+    </section>
+
+    <section id="league" class="page" hidden>
+      <p class="nav">Kirk Cup · Tangled League</p>
+      <h2>League</h2>
+      <div class="row tabs" id="league-tabs">
+        <button type="button" class="gold" data-ltab="kirk">Kirk Cup</button>
+        <button type="button" class="thin" data-ltab="tangled">Tangled League</button>
+      </div>
+      <div id="league-kirk">
+        <p class="lede">Washington DC MAGA vs Seattle Antifa. Real matches on this locker. Spectators and Watch AI do not count.</p>
+        <p class="lede" id="kirk-split">MAGA Washington DC 0 · Antifa Seattle 0</p>
+        <ul class="list" id="kirk-board"></ul>
+      </div>
+      <div id="league-tangled" hidden>
+        <p class="lede">Campus circuit W-L. Names on this board sit the season. @lilhooligan already sits. @blake plays when he wants — he has the keyboard, not expert AI, until he taps P. Your locker handle is on Kirk Cup.</p>
+        <p class="lede" id="tangled-league-you">Kirk Cup on this locker is your row. This board is the campus circuit.</p>
+        <ul class="list" id="tangled-board"></ul>
+      </div>
+    </section>
+
+    <section id="patch" class="page wide" hidden>
+      <p class="nav">Patches · Gameplay Updates · Previous Updates</p>
+      <div class="row tabs" id="patch-tabs">
+        <button type="button" class="gold" data-ptab="play">Gameplay Updates</button>
+        <button type="button" class="thin" data-ptab="prev">Previous Updates</button>
+      </div>
+      <p class="lede">
+        Same layout beat as
+        <a href="https://www.dota2.com/patches" target="_blank" rel="noreferrer">Dota 2 patches</a>:
+        a live Gameplay Update, then Previous Updates. General, lane creeps, items, heroes.
+        MAGA vs Antifa is original kits on Quad Engine C23 — not affiliated with Valve or Dota.
+      </p>
+      <div id="patch-view"></div>
+    </section>
+
+    <section id="howto" class="page wide" hidden>
+      <p class="nav">How to play · first match</p>
+      <h2>How to play</h2>
+      <p class="lede">
+        Wake the tab, queue MAGA, lock a kit, last-hit, take three towers a street, raze Seattle.
+        Skills is every bind and every Q W E R. FAQ is the short answers. Developed by Daniel Alan Cornish and Blake Fitzgerald.
+      </p>
+      <div id="howto-view"></div>
+    </section>
+
+    <section id="playbook" class="page wide" hidden>
+      <p class="nav">Skills · Controls · campus, wings, DLC</p>
+      <h2>Skills &amp; Controls</h2>
+      <p class="lede">
+        Every bind this tab actually uses, then every kit’s Q W E R with mana, cooldown, range, and how the skill aims.
+        MAGA and Antifa share the pool. Not a launcher. Developed by Daniel Alan Cornish and Blake Fitzgerald.
+      </p>
+      <div id="playbook-view"></div>
+    </section>
+
+    <section id="faq" class="page wide" hidden>
+      <p class="nav">FAQ · answers for this tab</p>
+      <h2>FAQ</h2>
+      <p class="lede">
+        How MAGA vs Antifa works in this browser. Patches cover what changed. Matches are free.
+        Developed by Daniel Alan Cornish and Blake Fitzgerald.
+      </p>
+      <nav class="gp-toc" id="faq-toc"></nav>
+      <div id="faq-view"></div>
+    </section>
+
+    <div id="hud" hidden>
+      <div id="topbar">
+        <span id="clock">0:00</span>
+        <span id="phase">EARLY GAME</span>
+        <span class="bases" title="Washington DC and Seattle">
+          <i class="base dc"><b id="base-dc"></b></i>
+          <i class="base sea"><b id="base-sea"></b></i>
+        </span>
+        <span id="follow-tag" hidden></span>
+        <span class="stat">
+          <i>K/D/A</i>
+          <strong id="kda">0 / 0 / 0</strong>
+        </span>
+        <span class="stat kdr-mark">
+          <i>K.D.R</i>
+          <b id="kdr">0.00</b>
+        </span>
+        <span id="gold">0g</span>
+        <span class="stat heat-stat">
+          <i>CS</i>
+          <strong id="heat-cs">0</strong>
+        </span>
+        <button type="button" id="btn-auto" class="gold" hidden>Expert AI · on</button>
+        <button type="button" id="btn-concede" class="thin" hidden>Concede</button>
+        <button type="button" id="btn-pause" class="thin">Pause</button>
+        <button type="button" id="btn-mute" class="thin">Mute</button>
+        <button type="button" id="btn-rage" class="rage">Rage Quit</button>
+      </div>
+      <div id="heat">
+        <span id="xp-wrap"><i id="xp-fill"></i><b id="xp-text">XP</b></span>
+        <span id="heat-line">Last-hit · buy · take a tower</span>
+      </div>
+      <div id="kick-match" hidden>
+        <p class="kicker">Kick vote · idle</p>
+        <p class="lede" id="kick-match-line">Your team is voting to kick you for idle.</p>
+        <button type="button" id="btn-kick-stay" class="red">Take the keyboard</button>
+      </div>
+      <div id="concede-match" hidden>
+        <p class="kicker">Concede vote</p>
+        <p class="lede" id="concede-line">MAGA is losing. Every player on this side must vote yes.</p>
+        <button type="button" id="btn-concede-yes" class="red">Vote yes</button>
+        <button type="button" id="btn-concede-no" class="thin">Vote no</button>
+      </div>
+      <div id="rage-box" hidden>
+        <div class="rage-card">
+          <p class="kicker">Leave</p>
+          <h2>Rage quit?</h2>
+          <p class="lede">Leave the current match? Concede still stands if MAGA is losing. This uses the same leave path as Pause → Leave campus. Stakes come back.</p>
+          <div class="wait-actions">
+            <button type="button" id="btn-rage-stay" class="thin">Stay in match</button>
+            <button type="button" id="btn-rage-go" class="red">Rage Quit</button>
+          </div>
+        </div>
+      </div>
+      <aside id="hero-side" aria-label="Hero artwork">
+        <canvas id="hero-side-art" width="160" height="208"></canvas>
+        <p id="hero-side-name">Hero</p>
+        <p id="hero-side-title">Kit</p>
+      </aside>
+      <div id="side-col">
+        <aside id="bet-slip" hidden>
+          <p class="kicker">Campus Book · locked</p>
+          <div id="bet-slip-list"></div>
+        </aside>
+        <aside id="live-chat" hidden>
+          <p class="chat-test-banner" hidden>CHAT TEST MODE</p>
+          <p class="kicker" id="live-kicker">T team mic · G all mic</p>
+          <div class="chat-wrap">
+            <div id="live-log" class="chat"></div>
+            <button type="button" id="live-new" class="chat-new" hidden>New messages</button>
+          </div>
+          <form id="live-form" hidden>
+            <input id="live-in" maxlength="140" placeholder="Type message..." autocomplete="off" />
+            <button type="submit" class="gold">SEND</button>
+          </form>
+        </aside>
+      </div>
+      <div id="feed"></div>
+      <div id="score" hidden>
+        <p class="kicker">Hold Tab</p>
+        <div class="score-cols">
+          <div>
+            <p class="score-side dc">Washington DC</p>
+            <div id="score-home"></div>
+          </div>
+          <div>
+            <p class="score-side sea">Seattle</p>
+            <div id="score-away"></div>
+          </div>
+        </div>
+      </div>
+      <div id="banner" hidden></div>
+      <div id="objective-line" hidden></div>
+      <div id="mile" hidden>
+        <p id="mile-line">Level 4 · pick a path</p>
+        <button type="button" id="mile-a" class="gold"></button>
+        <button type="button" id="mile-b" class="thin"></button>
+      </div>
+      <div id="dead" hidden>Down · <span id="respawn">0</span>s</div>
+      <aside id="shop" hidden>
+        <header>
+          <div class="shop-head">
+            <div>
+              <p class="kicker" id="shop-kicker">Fountain</p>
+              <h2>Gift Shop</h2>
+            </div>
+            <button type="button" id="btn-shop-close" class="thin">Close</button>
+          </div>
+          <p id="shop-hint">Stand in the pool to spend match gold.</p>
+          <input id="shop-search" type="search" placeholder="Search name, stat, effect, component" autocomplete="off" />
+        </header>
+        <nav id="shop-cats" aria-label="Gift shop categories"></nav>
+        <div id="shop-body">
+          <div id="shop-grid"></div>
+          <div id="shop-detail"></div>
+        </div>
+      </aside>
+      <footer id="bar">
+        <div id="portrait">
+          <img id="hero-art" alt="Riot Cap" width="56" height="56" />
+          <em id="hero-name">Riot Cap</em>
+          <span id="hero-target">Auto-attack</span>
+          <span id="hero-lvl">1</span>
+        </div>
+        <div id="vitals">
+          <i id="hp-fill"></i>
+          <b id="hp-text">0 / 0</b>
+          <i id="mp-fill"></i>
+          <b id="mp-text">0 / 0</b>
+        </div>
+        <div id="skills"></div>
+        <div id="inventory">
+          <span id="inv-gold">0g</span>
+          <div id="bag"></div>
+          <p id="inv-note" hidden></p>
+        </div>
+        <div id="touch-pad">
+          <button type="button" class="thin" data-touch="stop">Stop</button>
+          <button type="button" class="gold" data-touch="snap">Snap</button>
+          <button type="button" class="thin" data-touch="lock">Lock</button>
+        </div>
+        <button type="button" id="btn-shop" class="red">Shop</button>
+      </footer>
+    </div>
+
+    <div id="mic-hud" hidden>
+      <p id="mic-tag">TEAM MIC · MAGA · hold T</p>
+      <span id="mic-meter"><i id="mic-level"></i></span>
+    </div>
+
+    <section id="paused" class="page dim" hidden>
+      <h2>Paused</h2>
+      <div class="wait-actions">
+        <button type="button" id="btn-resume" class="red">Resume</button>
+        <button type="button" id="btn-quit" class="rage">Rage Quit</button>
+      </div>
+    </section>
+    <section id="victory" class="page dim" hidden>
+      <h2>Washington DC holds</h2>
+      <p class="lede">Seattle is down. MAGA holds the capital.</p>
+      <p class="scoreline">
+        <span>K/D/A</span> <strong id="win-kda">0 / 0 / 0</strong>
+        <span class="kdr-mark">K.D.R</span> <b id="win-kdr">0.00</b>
+      </p>
+      <p class="lede" id="win-heat">Queue again for the next coin drop.</p>
+      <p class="lede" id="win-bet" hidden></p>
+      <div class="wait-actions">
+        <button type="button" id="btn-again-w" class="red">Queue again</button>
+        <button type="button" id="btn-menu-w" class="thin">Enter page</button>
+      </div>
+    </section>
+    <section id="defeat" class="page dim" hidden>
+      <h2>Seattle takes Washington DC</h2>
+      <p class="lede">The capital fell. Queue MAGA again from the wait room.</p>
+      <p class="scoreline">
+        <span>K/D/A</span> <strong id="lose-kda">0 / 0 / 0</strong>
+        <span class="kdr-mark">K.D.R</span> <b id="lose-kdr">0.00</b>
+      </p>
+      <p class="lede" id="lose-heat">Show up gold still pays. Queue MAGA again.</p>
+      <p class="lede" id="lose-bet" hidden></p>
+      <div class="wait-actions">
+        <button type="button" id="btn-again-l" class="red">Queue again</button>
+        <button type="button" id="btn-menu-l" class="thin">Enter page</button>
+      </div>
+    </section>
+
+    <aside id="radio-bar" aria-label="Soundtrack">
+      <p class="kicker">Anthem</p>
+      <p id="radio-now" aria-live="polite">
+        <span class="radio-ticker-track">
+          <span class="radio-ticker-copy">The Star-Spangled Banner · public domain</span>
+          <span class="radio-ticker-copy" aria-hidden="true">The Star-Spangled Banner · public domain</span>
+        </span>
+      </p>
+      <div class="radio-bar-actions">
+        <button type="button" id="radio-toggle" class="gold">Music Off</button>
+        <button type="button" id="radio-next" class="thin">Next</button>
+        <button type="button" id="radio-list" class="thin">Tracks</button>
+        <button type="button" id="radio-link-sp" class="pay">Link Spotify · +1,000 gold</button>
+        <div class="radio-vol" role="group" aria-label="Music volume">
+          <label for="radio-vol">Volume</label>
+          <input id="radio-vol" type="range" min="0" max="100" step="1" value="100" />
+          <span id="radio-vol-out">100%</span>
+        </div>
+      </div>
+    </aside>
+    <aside id="radio" aria-label="Soundtrack">
+      <p id="radio-status">The Star-Spangled Banner plays in this tab — public domain, no download. Click once so the mixer can start.</p>
+      <div id="radio-tracks"></div>
+      <div id="radio-embed"></div>
+      <p class="lede radio-link">
+        Link Spotify once for <strong>+1,000 gold</strong>. Open Spotify, then come back to this tab. One claim on this locker.
+        <a id="radio-open" href="https://open.spotify.com/artist/0SKIyzX22RVmwIjrATmxtV" target="_blank" rel="noreferrer">Open Lil Hooligan on Spotify</a>
+      </p>
+    </aside>
+
+    <button type="button" id="sound-fab" class="sound-fab" aria-expanded="false" aria-controls="sound">Sound</button>
+    <aside id="sound" hidden>
+      <header>
+        <div>
+          <p class="kicker">Mixer</p>
+          <h2>Sound card</h2>
+        </div>
+        <button type="button" id="sound-close" class="thin">Close</button>
+      </header>
+      <p class="lede" id="sound-status">Browsers block sound until you click. Start audio, then combat, desk, and the anthem play on their own faders. Combat is royalty-free synth in this tab — no sample pack.</p>
+      <button type="button" id="sound-start" class="gold">Start audio</button>
+      <div class="sound-row">
+        <label for="sound-combat">Combat</label>
+        <input id="sound-combat" type="range" min="0" max="100" step="1" value="100" />
+        <span id="sound-combat-out">100%</span>
+        <span id="sound-combat-meter" class="sound-meter" aria-hidden="true"></span>
+      </div>
+      <div class="sound-row">
+        <label for="sound-desk">Desk</label>
+        <input id="sound-desk" type="range" min="0" max="100" step="1" value="90" />
+        <span id="sound-desk-out">90%</span>
+        <span id="sound-desk-meter" class="sound-meter" aria-hidden="true"></span>
+      </div>
+      <div class="sound-row">
+        <label for="sound-music">Music</label>
+        <input id="sound-music" type="range" min="0" max="100" step="1" value="100" />
+        <span id="sound-music-out">100%</span>
+        <span id="sound-music-meter" class="sound-meter" aria-hidden="true"></span>
+      </div>
+      <div class="sound-row mic-pick">
+        <label for="sound-mic">Talk mic</label>
+        <select id="sound-mic">
+          <option value="">Allow the mic — then this list fills (USB codec, computer, phone)</option>
+        </select>
+        <span id="sound-mic-out">Not found</span>
+        <span id="sound-mic-meter" class="sound-meter" aria-hidden="true"></span>
+      </div>
+      <div class="desk-actions">
+        <button type="button" id="sound-test-combat" class="thin">Test combat</button>
+        <button type="button" id="sound-test-desk" class="thin">Test desk</button>
+        <button type="button" id="sound-test-all" class="red">Play every sound</button>
+        <button type="button" id="sound-find-mic" class="gold">Find mics</button>
+      </div>
+      <p class="kicker">Talk looks for the computer mic, the phone mic, and USB codec audio interfaces. The Star-Spangled Banner is public domain and plays in this tab — no download. Each kit has its own original hit. Combat and coin drops are royalty-free synth.</p>
+    </aside>
+
+    <button type="button" id="desk-fab" class="desk-fab" aria-expanded="false" aria-controls="desk">Support</button>
+    <aside id="desk" hidden>
+      <header>
+        <div>
+          <p class="kicker">Campus Desk</p>
+          <h2>Support</h2>
+        </div>
+        <button type="button" id="desk-close" class="thin">Close</button>
+      </header>
+      <p class="lede" id="desk-status">Ask about play, Millix, DLC, Tangled, or seats. Replies come from the FAQ in this tab.</p>
+      <div id="desk-log" class="chat"></div>
+      <div id="desk-chips"></div>
+      <p id="desk-err" hidden></p>
+      <form id="desk-form">
+        <input id="desk-in" maxlength="280" placeholder="Ask the desk" autocomplete="off" />
+        <button type="submit" class="gold">Send</button>
+      </form>
+      <div class="desk-actions">
+        <button type="button" id="desk-mail" class="thin">Email this thread</button>
+        <button type="button" id="desk-clear" class="thin">Clear</button>
+      </div>
+    </aside>
+
+    <audio id="mix-out" autoplay playsinline></audio>
+    <aside id="soundcheck" hidden>
+      <div class="soundcheck-card">
+        <p class="kicker">Playback test</p>
+        <p id="soundcheck-pos">0 / 0</p>
+        <h2 id="soundcheck-now">Every sound in this tab</h2>
+        <p class="lede" id="soundcheck-status">Enter with sound starts this catalog. Unmute this tab. Watch the native player — that is the same mix.</p>
+        <p class="kicker" id="soundcheck-total"></p>
+        <audio id="soundcheck-el" controls playsinline></audio>
+        <div class="wait-actions">
+          <button type="button" id="soundcheck-play" class="red">Play every sound</button>
+          <button type="button" id="soundcheck-stop" class="thin">Stop test</button>
+          <button type="button" id="soundcheck-back" class="thin">Back</button>
+        </div>
+      </div>
+    </aside>
+
+    <div id="rubble"></div>
+    <aside id="paybox" class="paybox" hidden>
+      <p class="kicker" id="pay-rail">Millix micropayment</p>
+      <h2 id="pay-title">Skin</h2>
+      <p id="pay-deal" class="lede"></p>
+      <p id="mlx-invoice" class="node-box" hidden>
+        <span id="pay-dest-label">Pay this Millix node</span>
+        <code id="mlx-node"></code>
+        <button type="button" id="btn-copy-node" class="thin">Copy</button>
+      </p>
+      <p id="mlx-watch" class="lede"></p>
+      <form id="card-form" hidden>
+        <input id="card-name" maxlength="40" placeholder="Name on card" autocomplete="cc-name" />
+        <input id="card-num" maxlength="19" placeholder="Card number" inputmode="numeric" autocomplete="cc-number" />
+        <div class="row">
+          <input id="card-exp" maxlength="5" placeholder="MM/YY" autocomplete="cc-exp" />
+          <input id="card-cvc" maxlength="4" placeholder="CVC" inputmode="numeric" autocomplete="cc-csc" />
+        </div>
+        <button type="submit" class="red" id="pay-card-btn">Charge card</button>
+      </form>
+      <form id="pp-form" hidden>
+        <input id="pp-from" maxlength="64" placeholder="Your PayPal email" autocomplete="email" />
+        <button type="submit" class="gold" id="pay-pp-btn">Send PayPal</button>
+      </form>
+      <button type="button" id="pay-mlx" class="pay">Pay with Millix · 40% off £1.99</button>
+      <button type="button" id="pay-cancel" class="thin">Cancel</button>
+    </aside>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

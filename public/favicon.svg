@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="MAGA vs Antifa">
+  <rect width="64" height="64" rx="12" fill="#0c0e0b"/>
+  <path d="M8 40 L32 12 L56 40 V52 H8 Z" fill="#1c3320" stroke="#f0c14a" stroke-width="2"/>
+  <rect x="26" y="34" width="12" height="18" fill="#f0c14a"/>
+</svg>
