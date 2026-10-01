@@ -2,6 +2,7 @@ services:
   - type: web
     name: maga-vs-antifa
     runtime: node
+    plan: free
     buildCommand: npm install && npm run build && npm run server:build
     startCommand: npm start
     healthCheckPath: /health
