@@ -3,7 +3,7 @@ services:
     name: maga-vs-antifa
     runtime: node
     plan: free
-    buildCommand: npm install && npm run build && npm run server:build
+    buildCommand: npm install --include=dev && npm run build && npm run server:build
     startCommand: npm start
     healthCheckPath: /health
     envVars:
